@@ -9,9 +9,9 @@ const routes = {
   getEmbroidery: (id) => `/catalog/${id}`,
   getUserData: (userId) => `/user/${userId}`,
   editUserData: (userId) => `/user/${userId}/edit`,
-  // getCategoriesPath: (id) => `/categories`,
   uploadEmbroidery: () => '/upload',
   editEmbroidery: (id) => `/edit/${id}`,
+  discount: () => '/discount',
 };
 
 export default routes;
