@@ -6,3 +6,6 @@ start:
 
 build:
 	npm run build
+
+style:
+	npx prettier . --write
