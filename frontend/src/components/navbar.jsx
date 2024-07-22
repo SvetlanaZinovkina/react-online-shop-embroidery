@@ -28,7 +28,7 @@ const Navigate = () => {
         >
           {t('navBar.svg')}
         </Menu.Item>
-        <Menu.Item onClick={() => navigate(routes.discoonut())}>
+        <Menu.Item onClick={() => navigate(routes.discount())}>
           {t('navBar.discount')}
         </Menu.Item>
       </Menu>
