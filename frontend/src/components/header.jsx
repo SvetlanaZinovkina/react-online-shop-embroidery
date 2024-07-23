@@ -13,7 +13,7 @@ const Header = ({ children }) => {
       {children}
       <div className="overlay">
         <h1>{t('mainPage.welcome')}</h1>
-        <Button variant="light">{t('mainPage.catalog')}</Button>
+        <Button variant="light" href={routes.catalogPath()}>{t('mainPage.catalog')}</Button>
       </div>
     </header>
   );

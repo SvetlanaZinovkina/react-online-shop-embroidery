@@ -9,6 +9,11 @@
   --background-color: #f0f2f5; /* фоновый цвет */
 }
 
+h1, h2 {
+  font-family: 'Playfair', serif;
+
+}
+
 .navbar-brand {
   font-family: 'Playfair', serif;
   font-size: 25px;
@@ -18,7 +23,7 @@
 }
 
 .hero-section {
-  background: url('/images/background2.jpg') center center / cover no-repeat
+  background: url('/images/background4.webp') center center / cover no-repeat
     fixed;
   height: 60vh;
   display: flex;
@@ -30,7 +35,7 @@
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
   display: flex;
