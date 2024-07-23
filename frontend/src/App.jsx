@@ -4,6 +4,7 @@ import { I18nextProvider, initReactI18next } from 'react-i18next';
 import i18next from 'i18next';
 import AdminUploadPage from './components/AdminUploadPage.jsx';
 import NotFound from './pages/NotFound.jsx';
+import MainPage from './pages/HomePage.jsx';
 import routes from './routes/routes.js';
 import translationRU from './locales/ru.js';
 import translationEN from './locales/en.js';
@@ -36,6 +37,7 @@ const App = () => {
             element={<AdminUploadPage />}
           />
           <Route path={routes.notFoundPage()} element={<NotFound />} />
+          <Route path={routes.mainPage()} element={<MainPage />} />
         </Routes>
       </Router>
     </I18nextProvider>

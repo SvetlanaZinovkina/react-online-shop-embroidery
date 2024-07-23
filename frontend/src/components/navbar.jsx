@@ -1,37 +1,35 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
-import { Menu } from 'antd';
-import Link from 'antd/es/typography/Link';
-import routes from './routes/routes.js';
+import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
+import routes from '../routes/routes.js';
 
 const Navigate = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   return (
-    <>
-      <div>
-        <Link href={routes.mainPage()} style={{ fontFamily: 'Montesserat' }}>
-          {t('navBar.embroidery')}
-        </Link>
-      </div>
-      <Menu mode="horizontal" defaultSelectedKeys={['1']}>
-        <Menu.Item onClick={() => navigate(routes.mainPage())}>
-          {t('navBar.main')}
-        </Menu.Item>
-        <Menu.Item onClick={() => navigate(routes.embroidery())}>
-          {t('navBar.embroidery')}
-        </Menu.Item>
-        <Menu.Item
-          onClick={() => navigate(routes.svg())}
-          disabled={t('navBar.svg')}
-        >
-          {t('navBar.svg')}
-        </Menu.Item>
-        <Menu.Item onClick={() => navigate(routes.discount())}>
-          {t('navBar.discount')}
-        </Menu.Item>
-      </Menu>
-    </>
+    <Navbar variant="dark" expand="lg" fixed="top">
+      <Container>
+        <Navbar.Brand href={routes.mainPage()}>
+          {t('navBar.nameShop')}
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          <Nav className="ms-auto">
+            <Nav.Link href={routes.mainPage()}>Home</Nav.Link>
+            <Nav.Link href={routes.catalogPath()}>
+              {t('navBar.embroidery')}
+            </Nav.Link>
+            <Nav.Link href={routes.catalogSvgPath()}>
+              {t('navBar.svg')}
+            </Nav.Link>
+            <Nav.Link href={routes.discount()}>{t('navBar.discount')}</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
+
+export default Navigate;

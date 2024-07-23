@@ -1,12 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Button, Input, Upload, Select, Form as AntForm } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import { useState, useEffect } from 'react';
-
-const { Option } = Select;
+import { Button, Form as BootstrapForm, Container } from 'react-bootstrap';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -52,93 +48,98 @@ const AdminUploadPage = () => {
   };
 
   return (
-    <Formik
-      initialValues={{
-        title: '',
-        description: '',
-        category: '',
-        file: null,
-        image: null,
-      }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ setFieldValue }) => (
-        <Form>
-          <AntForm.Item label="Title">
-            <Field name="title" as={Input} />
-            <ErrorMessage
-              name="title"
-              component="div"
-              style={{ color: 'red' }}
-            />
-          </AntForm.Item>
+    <Container className="mt-5">
+      <Formik
+        initialValues={{
+          title: '',
+          description: '',
+          category: '',
+          file: null,
+          image: null,
+        }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ setFieldValue }) => (
+          <Form>
+            <BootstrapForm.Group controlId="formTitle">
+              <BootstrapForm.Label>Title</BootstrapForm.Label>
+              <Field name="title" as={BootstrapForm.Control} />
+              <ErrorMessage
+                name="title"
+                component="div"
+                className="text-danger"
+              />
+            </BootstrapForm.Group>
 
-          <AntForm.Item label="Description">
-            <Field name="description" as={Input.TextArea} />
-            <ErrorMessage
-              name="description"
-              component="div"
-              style={{ color: 'red' }}
-            />
-          </AntForm.Item>
+            <BootstrapForm.Group controlId="formDescription">
+              <BootstrapForm.Label>Description</BootstrapForm.Label>
+              <Field
+                name="description"
+                as={BootstrapForm.Control}
+                as="textarea"
+              />
+              <ErrorMessage
+                name="description"
+                component="div"
+                className="text-danger"
+              />
+            </BootstrapForm.Group>
 
-          <AntForm.Item label="Category">
-            <Field name="category" as={Select} defaultValue="">
-              <Option value="" disabled>
-                Select a category
-              </Option>
-              {categories.map((category) => (
-                <Option key={category.id} value={category.id}>
-                  {category.name}
-                </Option>
-              ))}
-            </Field>
-            <ErrorMessage
-              name="category"
-              component="div"
-              style={{ color: 'red' }}
-            />
-          </AntForm.Item>
+            <BootstrapForm.Group controlId="formCategory">
+              <BootstrapForm.Label>Category</BootstrapForm.Label>
+              <Field name="category" as="select" className="form-control">
+                <option value="" label="Select a category" />
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </Field>
+              <ErrorMessage
+                name="category"
+                component="div"
+                className="text-danger"
+              />
+            </BootstrapForm.Group>
 
-          <AntForm.Item label="File">
-            <Upload
-              beforeUpload={(file) => {
-                setFieldValue('file', file);
-                return false;
-              }}
-            >
-              <Button icon={<UploadOutlined />}>Select File</Button>
-            </Upload>
-            <ErrorMessage
-              name="file"
-              component="div"
-              style={{ color: 'red' }}
-            />
-          </AntForm.Item>
+            <BootstrapForm.Group controlId="formFile">
+              <BootstrapForm.Label>File</BootstrapForm.Label>
+              <BootstrapForm.Control
+                type="file"
+                onChange={(event) => {
+                  setFieldValue('file', event.currentTarget.files[0]);
+                }}
+              />
+              <ErrorMessage
+                name="file"
+                component="div"
+                className="text-danger"
+              />
+            </BootstrapForm.Group>
 
-          <AntForm.Item label="Image">
-            <Upload
-              beforeUpload={(file) => {
-                setFieldValue('image', file);
-                return false;
-              }}
-            >
-              <Button icon={<UploadOutlined />}>Select Image</Button>
-            </Upload>
-            <ErrorMessage
-              name="image"
-              component="div"
-              style={{ color: 'red' }}
-            />
-          </AntForm.Item>
+            <BootstrapForm.Group controlId="formImage">
+              <BootstrapForm.Label>Image</BootstrapForm.Label>
+              <BootstrapForm.Control
+                type="file"
+                onChange={(event) => {
+                  setFieldValue('image', event.currentTarget.files[0]);
+                }}
+              />
+              <ErrorMessage
+                name="image"
+                component="div"
+                className="text-danger"
+              />
+            </BootstrapForm.Group>
 
-          <Button type="primary" htmlType="submit">
-            Upload
-          </Button>
-        </Form>
-      )}
-    </Formik>
+            <Button type="submit" className="mt-3">
+              Upload
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </Container>
   );
 };
 

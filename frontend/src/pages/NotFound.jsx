@@ -1,44 +1,28 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Image, Typography } from 'antd';
+import { Image } from 'react-bootstrap';
 import notFoundImage from '../images/notFoundImage.jpg';
-
-const { Title, Text } = Typography;
 
 const NotFound = () => {
   const { t } = useTranslation();
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="d-flex justify-content-center align-items-center vh-100 position-relative">
       <Image
         alt={t('notFound.notPage')}
         src={notFoundImage}
-        style={{
-          position: 'absolute',
-          width: '100vw',
-          height: '100vh',
-          objectFit: 'cover',
-        }}
+        className="position-absolute w-100 h-100 object-fit-cover"
       />
 
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: 'white',
-          textAlign: 'center',
-        }}
-      >
-        <Title level={1}>404</Title>
-        <Title level={4}>{t('notFound.notPage')}</Title>
-        <Text>
+      <div className="position-absolute text-center text-white">
+        <h1>404</h1>
+        <h4>{t('notFound.notPage')}</h4>
+        <p>
           {t('notFound.mainLink')}
-          <a href="/" style={{ color: 'aqua' }}>
+          <a href="/" className="text-info">
             {t('notFound.textMuted')}
           </a>
-        </Text>
+        </p>
       </div>
     </div>
   );

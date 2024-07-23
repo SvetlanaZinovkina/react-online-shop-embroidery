@@ -6,6 +6,7 @@ const routes = {
   signUpPage: () => '/signup',
   cart: () => '/cart',
   catalogPath: () => '/catalog',
+  catalogSvgPath: () => '/catalog/svg',
   getEmbroidery: (id) => `/catalog/${id}`,
   getUserData: (userId) => `/user/${userId}`,
   editUserData: (userId) => `/user/${userId}/edit`,

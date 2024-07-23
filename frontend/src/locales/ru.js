@@ -31,9 +31,11 @@ export default {
     discount: 'Акции',
     contactMe: 'Контакты',
     telegramShop: 'Наш Телеграм',
+    nameShop: 'Embroidery by Lana',
   },
   mainPage: {
-    welcome: 'Добро пожаловать в магазин машинной вышивки и SVG!',
+    catalog: 'Каталог вышивок',
+    welcome: `Добро пожаловать в магазин машинной вышивки и SVG!`,
     popularEmbroidery: 'Популярные вышивки',
     newEmbroidery: 'Новинка',
     contact: 'Контакты',
