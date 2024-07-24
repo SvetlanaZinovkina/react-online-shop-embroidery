@@ -2,6 +2,8 @@ import React from 'react';
 import Navigate from '../components/navbar.jsx';
 import Header from '../components/header.jsx';
 import PopularItem from '../components/popularItem.jsx';
+import Rules from '../components/rules.jsx';
+
 
 const MainPage = () => {
   return (
@@ -9,7 +11,10 @@ const MainPage = () => {
       <Header>
         <Navigate />
       </Header>
-      <PopularItem />
+      <main>
+        <Rules />
+        <PopularItem />
+      </main>
     </>
   );
 };
