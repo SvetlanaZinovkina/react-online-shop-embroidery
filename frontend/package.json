@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "test": "DISABLE_ESLINT_PLUGIN=true react-scripts test",
+    "eject": "DISABLE_ESLINT_PLUGIN=true react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +52,7 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-functional": "^6.6.3",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-react": "^7.35.0",

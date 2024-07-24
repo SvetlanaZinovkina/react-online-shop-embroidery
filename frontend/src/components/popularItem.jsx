@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
-import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import {
+  Button, Card, Container, Row, Col,
+} from 'react-bootstrap';
 
 const PopularItem = () => {
   const { t } = useTranslation();
@@ -83,8 +85,11 @@ const PopularItem = () => {
             <Card>
               <Card.Img variant="top" src={item.image} />
               <Card.Body>
-                <Card.Title className='text-center'>{item.name}</Card.Title>
-                <Card.Text className='text-center'>Цена: {item.price}</Card.Text>
+                <Card.Title className="text-center">{item.name}</Card.Title>
+                <Card.Text className="text-center">
+                  Цена:
+                  {item.price}
+                </Card.Text>
                 <Button
                   variant="primary"
                   className="me-2"

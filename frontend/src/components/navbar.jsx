@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
-import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
+import {
+  Navbar, Nav, Container, NavDropdown, Button,
+} from 'react-bootstrap';
 import routes from '../routes/routes.js';
 
 const Navigate = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   return (
     <Navbar variant="dark" expand="lg" fixed="top">
@@ -17,7 +17,7 @@ const Navigate = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="ms-auto">
-            <Nav.Link href={routes.mainPage()}>Home</Nav.Link>
+            <Nav.Link href={routes.mainPage()}>{t('navBar.main')}</Nav.Link>
             <Nav.Link href={routes.catalogPath()}>
               {t('navBar.embroidery')}
             </Nav.Link>
