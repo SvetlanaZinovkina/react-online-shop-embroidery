@@ -122,5 +122,5 @@ export default (app) => {
 			console.error('Error uploading category:', err);
 			reply.send({ success: false, message: 'Error uploading category' });
 		}
-	};
+	});
 };
