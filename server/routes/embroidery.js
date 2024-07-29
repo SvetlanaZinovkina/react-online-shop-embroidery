@@ -1,7 +1,7 @@
 import knex from '../knex.js';
 
 export default (app) => {
-		app.get('/api/v1/popular-embroidery', async (req, reply) => {
+		app.get('/api/v1/shop/popular-embroidery', async (req, reply) => {
 				try {
 						const popularEmbroidery = await knex('products').select('*').limit(10);
 						reply.send(popularEmbroidery);
@@ -10,7 +10,7 @@ export default (app) => {
 				}
 		});
 
-		app.get('/api/v1/catalog/:id', async (req, reply) => {
+		app.get('/api/v1/shop/embroidery/:id', async (req, reply) => {
 				try {
 						const { id } = req.params;
 						const embroidery = await knex('products').where('product_id', id).first();
@@ -20,7 +20,7 @@ export default (app) => {
 				}
 		});
 
-		app.get('/api/v1/catalog', async (req, reply) => {
+		app.get('/api/v1/shop/embroidery', async (req, reply) => {
 				try {
 						const { page = 1, limit = 20 } = req.query;
 						const offset = (page - 1) * limit;

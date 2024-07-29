@@ -30,7 +30,7 @@ const fastify = Fastify({
 })
 fastify.register(fastifySensible);
 // fastify.register(fastifyFormbody, { parser: qs.parse });
-fastify.register(fastifyMethodOverride);
+// await fastify.register(fastifyMethodOverride);
 // fastify.register(fastifyObjectionjs, {
 // 		knexConfig: knexConfig[mode],
 // 		models,
