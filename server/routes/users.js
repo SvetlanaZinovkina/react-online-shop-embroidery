@@ -106,4 +106,33 @@ export default (app) => {
       }
     }
   );
+  app.put(
+    "/api/v1/user/password",
+    { preValidation: [app.authenticate] },
+    async (req, reply) => {
+      const userId = req.user.user_id;
+      const { oldPassword, newPassword } = req.body;
+
+      try {
+        const password = await knex("users")
+          .select("password_hash")
+          .where("user_id", userId);
+        const isMatch = await bcrypt.compare(oldPassword, password);
+
+        if (!isMatch)
+          reply.status(400).send({ error: "Old pasword isn't correct" });
+
+        const newHashedPassword = await bcrypt.hash(newPassword, 5);
+        await knex("users")
+          .where("user_id", userId)
+          .update({ password_hash: newHashedPassword });
+
+        reply.send({ sucess: true });
+      } catch (err) {
+        reply
+          .status(500)
+          .send({ error: "Failed to update passwword", details: err.message });
+      }
+    }
+  );
 };
