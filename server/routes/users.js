@@ -90,4 +90,20 @@ export default (app) => {
       }
     }
   );
+  app.put(
+    "/api/v1/user/email",
+    { preValidation: [app.authenticate] },
+    async (req, reply) => {
+      const userId = req.user.user_id;
+      const { email } = req.body;
+      try {
+        await knex("users").where("user_id", userId).update({ email });
+        reply.send({ sucess: true });
+      } catch (err) {
+        reply
+          .status(500)
+          .send({ error: "Failed to update email", details: err.message });
+      }
+    }
+  );
 };
