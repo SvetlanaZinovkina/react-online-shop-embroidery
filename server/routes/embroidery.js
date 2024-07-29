@@ -117,7 +117,7 @@ export default (app) => {
 		const { category } = req.body;
 		try {
 			await knex('categories').insert({ name: category });
-			reply.send({ success: true, message: 'Category uploaded successfully' });
+			reply.status(200).send({ success: true, message: 'Category uploaded successfully' });
 		} catch (err) {
 			console.error('Error uploading category:', err);
 			reply.send({ success: false, message: 'Error uploading category' });
