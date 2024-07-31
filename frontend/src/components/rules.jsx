@@ -13,8 +13,12 @@ const Rules = () => {
           <p>{t('mainPage.rules2')}</p>
           <p>{t('mainPage.rules3')}</p>
           <p>{t('mainPage.rules4')}</p>
-          <p><span className="highlight">{t('mainPage.rules5')}</span></p>
-          <p><span className="highlight">{t('mainPage.rules6')}</span></p>
+          <p>
+            <span className="highlight">{t('mainPage.rules5')}</span>
+          </p>
+          <p>
+            <span className="highlight">{t('mainPage.rules6')}</span>
+          </p>
           <p>{t('mainPage.rules7')}</p>
           <p>{t('mainPage.rules8')}</p>
         </article>

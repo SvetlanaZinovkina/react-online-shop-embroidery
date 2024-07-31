@@ -3,8 +3,8 @@ export const up = (knex) => (
 				table.integer('product_id').notNullable();
 				table.integer('category_id').notNullable();
 				table.primary(['product_id', 'category_id']);
-				table.foreign('product_id').references('products.product_id');
-				table.foreign('category_id').references('categories.category_id');
+				table.foreign('product_id').references('products.product_id').onDelete('CASCADE');;
+				table.foreign('category_id').references('categories.category_id').onDelete('CASCADE');;
 		})
 );
 

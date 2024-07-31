@@ -28,7 +28,5 @@ const api = createApi({
   }),
 });
 
-export const {
-  useGetPopularEmbroideryQuery,
-} = api;
+export const { useGetPopularEmbroideryQuery } = api;
 export default api;

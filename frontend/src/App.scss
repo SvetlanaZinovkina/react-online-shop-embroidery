@@ -10,7 +10,8 @@
   --background-color: #f0f2f5; /* фоновый цвет */
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: 'Playfair Display', serif;
   line-height: 1.5em;
   font-weight: 400;
@@ -76,7 +77,6 @@ main {
   article {
     max-width: 780px;
   }
-
 }
 p {
   font-family: 'Playfair Display', serif;
@@ -89,8 +89,8 @@ p {
   padding: 5px;
   border-radius: 3px;
 }
-.footer-rights-image{
-  background: url('/images/footerThreads2.jpg') center center / cover no-repeat
+.footer-rights-image {
+  background: url('/images/footerThreads2.jpg') center center / cover no-repeat;
 }
 .footer {
   background-color: #f7f7f7;

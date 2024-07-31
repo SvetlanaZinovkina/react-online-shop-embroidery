@@ -3,7 +3,7 @@ import fastifyFormbody from '@fastify/formbody';
 // import fastifyPassport from '@fastify/passport';
 import fastifySensible from '@fastify/sensible';
 import fastifyMethodOverride from 'fastify-method-override';
-// import fastifyObjectionjs from 'fastify-objectionjs';
+import fastifyMultipart from 'fastify-multipart';
 import fastifyStatic from '@fastify/static';
 import fastifyJwt from '@fastify/jwt';
 import fastifyAuth from '@fastify/auth';
@@ -29,12 +29,16 @@ const fastify = Fastify({
 		logger: true
 })
 fastify.register(fastifySensible);
-// fastify.register(fastifyFormbody, { parser: qs.parse });
+fastify.register(fastifyFormbody);
 // await fastify.register(fastifyMethodOverride);
 // fastify.register(fastifyObjectionjs, {
 // 		knexConfig: knexConfig[mode],
 // 		models,
 // });
+fastify.register(fastifyMultipart, {
+		attachFieldsToBody: true,
+		limits: { fileSize: 50 * 1024 * 1024 }, // Установка ограничений на размер файла
+});
 fastify.register(fastifyStatic, {
 		root: path.join(__dirname, '../frontend/build'),
 		prefix: '/',

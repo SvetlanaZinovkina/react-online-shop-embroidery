@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 // import { useNavigate } from 'react-router';
-import {
-  Button, Card, Container, Row, Col,
-} from 'react-bootstrap';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useGetPopularEmbroideryQuery } from '../store/api.js';
 
@@ -78,7 +76,11 @@ const PopularItem = async () => {
   //   },
   // ];
 
-  const { data: embroideryItems, error, isLoading } = useGetPopularEmbroideryQuery();
+  const {
+    data: embroideryItems,
+    error,
+    isLoading,
+  } = useGetPopularEmbroideryQuery();
   console.log(useGetPopularEmbroideryQuery());
   if (isLoading) return <div>Loading...</div>;
   if (error) {

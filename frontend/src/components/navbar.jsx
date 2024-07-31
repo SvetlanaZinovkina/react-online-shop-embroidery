@@ -1,8 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  Navbar, Nav, Container, NavDropdown, Button,
-} from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
 import routes from '../routes/routes.js';
 
 const Navigate = () => {
