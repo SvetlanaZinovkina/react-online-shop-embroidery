@@ -1,23 +1,27 @@
 import path from 'path';
 import pump from 'pump';
+import { pipeline } from 'stream/promises';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import knex from '../knex.js';
+import Embroidery from '../models/Embroidery.js';
+import processEmbroideryUpload from '../services/uploadEmbroidery.js';
 
 export default (app) => {
   app.get('/api/v1/shop/popular-embroidery', async (req, reply) => {
     try {
-      const popularEmbroidery = await knex('products').select('*').limit(10);
+      const popularEmbroidery = await Embroidery.getPopularEmbroidery();
       reply.send(popularEmbroidery);
     } catch (err) {
-      reply.send(err);
+      reply.status(500).send({ error: err.message });
     }
   });
 
   app.get('/api/v1/shop/embroidery/:id', async (req, reply) => {
     try {
       const { id } = req.params;
-      const embroidery = await knex('products').where('product_id', id).first();
+      const { language } = req.query;
+      const embroidery = await Embroidery.findById(id, language);
       reply.send(embroidery);
     } catch (err) {
       reply.send(err);
@@ -87,75 +91,8 @@ export default (app) => {
     }
   });
   app.post('/api/v1/shop/embroidery', async (req, reply) => {
-    const {
-      title, description, price, category,
-    } = req.body;
-    const { file } = req.body;
-    const { image } = req.body;
-    const __dirname = fileURLToPath(path.dirname(import.meta.url));
-
     try {
-      // Начинаем транзакцию
-      await knex.transaction(async (trx) => {
-        // Проверка на наличие всех необходимых данных и файлов
-        if (!title || !description || !price || !category || !file || !image) {
-          throw new Error('Missing required fields');
-        }
-
-        // Определяем пути для сохранения файлов
-        const uploadDir = path.join(__dirname, '..', 'embroidery', `${title.value}`);
-        await fs.promises.mkdir(uploadDir, { recursive: true }); // Создаем директорию, если она не существует
-
-        const filePath = path.join(uploadDir, file.filename);
-        const imagePath = path.join(uploadDir, image.filename);
-
-        // Чтение и запись файлов
-        // await pump(file.file, fs.createWriteStream(filePath));
-        // await pump(image.file, fs.createWriteStream(imagePath));
-        try {
-          await new Promise((resolve, reject) => {
-            pump(file.file, fs.createWriteStream(filePath), (err) => {
-              if (err) return reject(err);
-              resolve();
-            });
-          });
-
-          await new Promise((resolve, reject) => {
-            pump(image.file, fs.createWriteStream(imagePath), (err) => {
-              if (err) return reject(err);
-              resolve();
-            });
-          });
-        } catch (err) {
-          throw new Error(`Failed to save files: ${err.message}`);
-        }
-        // Вставка данных о продукте в таблицу products
-        const [productId] = await trx('products').insert({
-          name: title.value,
-          description: description.value,
-          price: price.value,
-          file_path: filePath,
-          created_at: trx.fn.now(),
-          updated_at: trx.fn.now(),
-        }).returning('product_id');
-
-        const id = productId.product_id;
-        // Вставка данных об изображении в таблицу embroidery_images
-        await trx('embroidery_images').insert({
-          embroidery_id: id,
-          image_path: imagePath,
-        });
-
-        // Вставка данных о категории в таблицу product_categories
-        await trx('product_categories').insert({
-          product_id: id,
-          category_id: category.value,
-        });
-
-        // Фиксируем транзакцию
-        await trx.commit();
-      });
-
+      await processEmbroideryUpload(req);
       reply.send({ success: true, message: 'Embroidery uploaded successfully' });
     } catch (err) {
       console.error('Error uploading embroidery:', err);

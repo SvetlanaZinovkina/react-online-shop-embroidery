@@ -18,16 +18,16 @@ const mode = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 5001;
 
 const addHooks = (app) => {
-		app.addHook('preHandler', async (req, reply) => {
-				reply.locals = {
-						isAuthenticated: () => req.isAuthenticated(),
-				};
-		});
+  app.addHook('preHandler', async (req, reply) => {
+    reply.locals = {
+      isAuthenticated: () => req.isAuthenticated(),
+    };
+  });
 };
 
 const fastify = Fastify({
-		logger: true
-})
+  logger: true,
+});
 fastify.register(fastifySensible);
 fastify.register(fastifyFormbody);
 // await fastify.register(fastifyMethodOverride);
@@ -35,37 +35,34 @@ fastify.register(fastifyFormbody);
 // 		knexConfig: knexConfig[mode],
 // 		models,
 // });
-fastify.register(fastifyMultipart, {
-		attachFieldsToBody: true,
-		limits: { fileSize: 50 * 1024 * 1024 }, // Установка ограничений на размер файла
-});
+fastify.register(fastifyMultipart);
 fastify.register(fastifyStatic, {
-		root: path.join(__dirname, '../frontend/build'),
-		prefix: '/',
+  root: path.join(__dirname, '../frontend/build'),
+  prefix: '/',
 });
 
 fastify.register(fastifyJwt, {
-		secret: process.env.JWT_SECRET,
+  secret: process.env.JWT_SECRET,
 });
 
 fastify.register(fastifyAuth);
 
 fastify.decorate('authenticate', async (request, reply) => {
-		try {
-				await request.jwtVerify();
-		} catch (err) {
-				reply.send(err);
-		}
+  try {
+    await request.jwtVerify();
+  } catch (err) {
+    reply.send(err);
+  }
 });
 
 routes(fastify);
 
 const start = async () => {
-		try {
-				await fastify.listen({ port: PORT })
-		} catch (err) {
-				fastify.log.error(err)
-				process.exit(1)
-		}
-}
+  try {
+    await fastify.listen({ port: PORT });
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+};
 start();
