@@ -19,8 +19,6 @@ class EmbroideryTranslation {
       .where({ embroidery_id: embroideryId, language })
       .first();
   }
-
-  // Добавьте другие методы по необходимости
 }
 
 export default EmbroideryTranslation;

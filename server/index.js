@@ -30,11 +30,6 @@ const fastify = Fastify({
 });
 fastify.register(fastifySensible);
 fastify.register(fastifyFormbody);
-// await fastify.register(fastifyMethodOverride);
-// fastify.register(fastifyObjectionjs, {
-// 		knexConfig: knexConfig[mode],
-// 		models,
-// });
 fastify.register(fastifyMultipart);
 fastify.register(fastifyStatic, {
   root: path.join(__dirname, '../frontend/build'),

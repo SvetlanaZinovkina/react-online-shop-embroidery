@@ -19,10 +19,5 @@ rules:
   new-cap:
     - error
     - properties: false
-  no-param-reassign:
-    - error
-    - props: true
-      ignorePropertyModificationsFor:
-        - req
-        - reply
+  no-param-reassign: off
   no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]
