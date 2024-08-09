@@ -3,10 +3,10 @@ import knex from '../knex.js';
 class Category {
   static async create(name, language) {
     try {
-      const [categoryId] = await knex('categories').insert({});
-
+      const [categoryId] = await knex('categories').insert({}).returning('category_id as id');
+      const { id } = categoryId;
       await knex('category_translations').insert({
-        category_id: categoryId,
+        category_id: id,
         language,
         name,
       });

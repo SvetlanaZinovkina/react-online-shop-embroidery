@@ -13,6 +13,7 @@ import path from 'path';
 import routes from './routes/index.js';
 
 const __dirname = fileURLToPath(path.dirname(import.meta.url));
+const imagesDir = path.join(__dirname, 'embroidery');
 dotenv.config();
 const mode = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 5001;
@@ -31,13 +32,10 @@ const fastify = Fastify({
 fastify.register(fastifySensible);
 fastify.register(fastifyFormbody);
 fastify.register(fastifyMultipart);
-fastify.register(fastifyStatic, {
-  root: path.join(__dirname, '../frontend/build'),
-  prefix: '/',
-});
 
-fastify.register(fastifyJwt, {
-  secret: process.env.JWT_SECRET,
+fastify.register(fastifyStatic, {
+  root: imagesDir, // Укажите путь к директории с изображениями
+  prefix: '/embroidery/', // Префикс URL для доступа к изображениям
 });
 
 fastify.register(fastifyAuth);
@@ -54,7 +52,7 @@ routes(fastify);
 
 const start = async () => {
   try {
-    await fastify.listen({ port: PORT });
+    await fastify.listen({ port: PORT, host: '0.0.0.0' });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);

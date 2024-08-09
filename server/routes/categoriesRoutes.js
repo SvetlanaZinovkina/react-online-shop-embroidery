@@ -1,4 +1,5 @@
 import Category from '../models/Category.js';
+import knex from '../knex.js';
 
 export default (app) => {
   app.get('/api/v1/shop/category', async (req, reply) => {

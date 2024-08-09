@@ -16,11 +16,11 @@ const api = createApi({
   baseQuery,
   endpoints: (builder) => ({
     getPopularEmbroidery: builder.query({
-      query: () => 'popular-embroidery',
+      query: () => routes.getPopularEmbroidery(),
     }),
     createUser: builder.mutation({
       query: (newUser) => ({
-        url: routes.signUpPage(),
+        url: routes.signUp(),
         method: 'POST',
         body: newUser,
       }),

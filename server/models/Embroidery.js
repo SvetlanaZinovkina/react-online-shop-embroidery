@@ -1,5 +1,4 @@
 import knex from '../knex.js';
-import EmbroideryImage from './EmbroideryImage.js';
 
 class Embroidery {
   static async create({
@@ -63,22 +62,23 @@ class Embroidery {
 
   static async getPopularEmbroidery(language = 'en', limit = 10) {
     try {
-      return await knex('reviews_embroidery')
-        .join('embroidery', 'reviews_embroidery.embroidery_id', 'embroidery.id')
+      return await knex('embroidery')
+        .leftJoin('reviews_embroidery', 'embroidery.id', 'reviews_embroidery.embroidery_id')
         .join('embroidery_translations', function () {
           this.on('embroidery.id', 'embroidery_translations.embroidery_id')
-            .andOn('embroidery_translations.language', '=', language);
+            .andOn('embroidery_translations.language', '=', knex.raw('?', [language]));
         })
         .join('embroidery_images', 'embroidery.id', 'embroidery_images.embroidery_id')
         .select(
+          'embroidery.id',
           'embroidery_images.image_path as image',
           'embroidery_translations.price',
           'embroidery_translations.title',
           'embroidery.is_on_sale',
           'embroidery.sale_price',
+          knex.raw('COALESCE(AVG(reviews_embroidery.rating), 0) as avg_rating'),
+          knex.raw('COALESCE(COUNT(reviews_embroidery.review_id), 0) as review_count'),
         )
-        .avg('reviews_embroidery.rating as avg_rating')
-        .count('reviews_embroidery.review_id as review_count')
         .groupBy(
           'embroidery.id',
           'embroidery_images.image_path',

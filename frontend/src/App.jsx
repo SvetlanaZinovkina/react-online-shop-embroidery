@@ -36,7 +36,7 @@ const App = () => {
         <Router>
           <Routes>
             <Route
-              path={routes.uploadEmbroidery()}
+              path={routes.uploadEmbroideryAdmin()}
               element={<AdminUploadPage />}
             />
             <Route path={routes.notFoundPage()} element={<NotFound />} />
