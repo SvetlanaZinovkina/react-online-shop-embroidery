@@ -5,6 +5,7 @@ import {
   Button, Card, Container, Row, Col,
 } from 'react-bootstrap';
 import { useGetPopularEmbroideryQuery } from '../store/api.js';
+import createPathToImg from '../helpers/createPathToImg.js';
 
 const PopularItem = () => {
   const { t } = useTranslation();
@@ -42,7 +43,7 @@ const PopularItem = () => {
         {embroideryItems.map((item) => (
           <Col md={4} key={item.id} className="mb-4">
             <Card>
-              <Card.Img variant="top" src={item.image} />
+              <Card.Img variant="top" src={createPathToImg(item.image)} />
               <Card.Body>
                 <Card.Title className="text-center">{item.title}</Card.Title>
                 <Card.Text className="text-center">
