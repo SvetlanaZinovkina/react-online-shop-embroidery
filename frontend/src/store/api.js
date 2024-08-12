@@ -25,6 +25,40 @@ const api = createApi({
         body: newUser,
       }),
     }),
+    loginUser: builder.mutation({
+      query: (userData) => ({
+        url: routes.login(),
+        method: 'POST',
+        body: userData,
+      }),
+    }),
+    getPurchases: builder.query({
+      query: () => routes.purchases(),
+    }),
+    getUserData: builder.query({
+      query: () => routes.getUserData(),
+    }),
+    updateUsername: builder.mutation({
+      query: (username) => ({
+        url: routes.updateUsername(),
+        method: 'PUT',
+        body: { username },
+      }),
+    }),
+    updateEmail: builder.mutation({
+      query: (email) => ({
+        url: routes.updateEmail(),
+        method: 'PUT',
+        body: { email },
+      }),
+    }),
+    updatePassword: builder.mutation({
+      query: ({ oldPassword, newPassword }) => ({
+        url: routes.updatePassword(),
+        method: 'PUT',
+        body: { oldPassword, newPassword },
+      }),
+    }),
   }),
 });
 
