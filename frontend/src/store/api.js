@@ -16,7 +16,48 @@ const api = createApi({
   baseQuery,
   endpoints: (builder) => ({
     getPopularEmbroidery: builder.query({
-      query: () => routes.getPopularEmbroidery(),
+      query: (language = 'en') => ({
+        url: routes.getPopularEmbroidery(),
+        params: { language },
+      }),
+    }),
+    getEmbroideryById: builder.query({
+      query: ({ id, language = 'en' }) => ({
+        url: routes.getEmbroidery(id),
+        params: { language },
+      }),
+    }),
+    getEmbroideryList: builder.query({
+      query: ({ page = 1, limit = 20, language = 'en' }) => ({
+        url: routes.getEmbroideriesList(),
+        params: { page, limit, language },
+      }),
+    }),
+    getEmbroideryByCategory: builder.query({
+      query: ({ categoryId, page = 1, limit = 20, language = 'en' }) => ({
+        url: routes.getEmbroideriesByCategory(categoryId),
+        params: { page, limit, language },
+      }),
+    }),
+    uploadEmbroidery: builder.mutation({
+      query: (embroideryData) => ({
+        url: routes.uploadEmbroidery(),
+        method: 'POST',
+        body: embroideryData,
+      }),
+    }),
+    getCategories: builder.query({
+      query: (language = 'en') => ({
+        url: routes.getCategories(),
+        params: { language },
+      }),
+    }),
+    createCategory: builder.mutation({
+      query: (categoryData) => ({
+        url: routes.uploadCategory(),
+        method: 'POST',
+        params: categoryData,
+      }),
     }),
     createUser: builder.mutation({
       query: (newUser) => ({
@@ -62,5 +103,20 @@ const api = createApi({
   }),
 });
 
-export const { useGetPopularEmbroideryQuery } = api;
+export const {
+  useGetPopularEmbroideryQuery,
+  useGetEmbroideryByIdQuery,
+  useGetEmbroideryListQuery,
+  useGetEmbroideryByCategoryQuery,
+  useUploadEmbroideryMutation,
+  useGetCategoriesQuery,
+  useCreateCategoryMutation,
+  useCreateUserMutation,
+  useLoginUserMutation,
+  useGetPurchasesQuery,
+  useGetUserDataQuery,
+  useUpdateUsernameMutation,
+  useUpdateEmailMutation,
+  useUpdatePasswordMutation,
+} = api;
 export default api;
