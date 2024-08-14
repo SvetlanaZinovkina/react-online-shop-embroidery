@@ -4,6 +4,7 @@ import {
   Navbar, Nav, Container, NavDropdown, Button,
 } from 'react-bootstrap';
 import routes from '../routes/routes.js';
+import UserIcon from './UserIcon.jsx';
 
 const Navigate = () => {
   const { t } = useTranslation();
@@ -25,6 +26,9 @@ const Navigate = () => {
               {t('navBar.svg')}
             </Nav.Link>
             <Nav.Link href={routes.discount()}>{t('navBar.discount')}</Nav.Link>
+            <Nav.Link href={routes.getUserData()} className="d-flex align-items-center">
+              <UserIcon className="me-2" />
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

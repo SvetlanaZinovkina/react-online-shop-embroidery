@@ -78,10 +78,7 @@ main {
     max-width: 780px;
   }
 }
-p {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-}
+
 
 .highlight {
   background-color: pink;
@@ -94,6 +91,13 @@ p {
 }
 .footer {
   background-color: #f7f7f7;
+  padding-bottom: 30px;
+
+  p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+  }
+
 }
 .contact-info {
   display: flex;

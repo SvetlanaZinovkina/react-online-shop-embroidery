@@ -23,6 +23,8 @@ const routes = {
   editUserData: (userId) => `/user/${userId}/edit`,
   editEmbroidery: (id) => `/edit/${id}`,
   discount: () => '/discount',
+  policy: () => '/policy',
+
 };
 
 export default routes;

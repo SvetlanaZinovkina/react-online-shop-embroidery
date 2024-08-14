@@ -6,6 +6,7 @@ import { Provider, useDispatch } from 'react-redux';
 import AdminUploadPage from './components/AdminUploadPage.jsx';
 import NotFound from './pages/NotFound.jsx';
 import MainPage from './pages/HomePage.jsx';
+import Policy from './pages/Policy.jsx';
 import routes from './routes/routes.js';
 import translationRU from './locales/ru.js';
 import translationEN from './locales/en.js';
@@ -41,6 +42,7 @@ const App = () => {
             />
             <Route path={routes.notFoundPage()} element={<NotFound />} />
             <Route path={routes.mainPage()} element={<MainPage />} />
+            <Route path={routes.policy()} element={<Policy />} />
           </Routes>
         </Router>
       </I18nextProvider>
