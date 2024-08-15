@@ -7,11 +7,10 @@ import Footer from '../components/footer.jsx';
 
 const MainPage = () => (
   <>
-    <Header>
-      <Navigate />
-    </Header>
+    <Navigate />
+    <Header />
     <main>
-      <Rules />
+      {/* <Rules /> */}
       <PopularItem />
     </main>
     <Footer />

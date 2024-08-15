@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 :root {
   --primary-color: #8a2be2; /* сиреневый */
   --secondary-color: #ffffff; /* белый */
@@ -12,27 +12,35 @@
 
 h1,
 h2 {
-  font-family: 'Playfair Display', serif;
-  line-height: 1.5em;
+  font-family: 'Comfortaa', sans-serif;
+  line-height: 1.7em;
   font-weight: 400;
 }
 
 h5 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   line-height: 1.35em;
   font-size: 35px;
   font-weight: 400;
 }
 
 .navbar-brand {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 25px;
   line-height: 1.5em;
   font-weight: 400;
 }
+
+.nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
 nav {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+  background: #004F44;
+  .container-fluid{
+    max-width: 1300px;
+    justify-content: space-between;
+  }
 }
 .navbar-nav {
   a {
@@ -41,28 +49,35 @@ nav {
 }
 
 .hero-section {
-  background: url('/images/background4.webp') center center / cover no-repeat
-    fixed;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  background-attachment: fixed;
+  background: #004F44;
+  .container-fluid {
+    max-width: 1300px;
+    padding: 0 30px;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    //text-align: center;
+    color: white;
+  }
+  a {
+    font-family: 'Comfortaa', sans-serif;
+    color: #004F44;
+  }
+  img {
+    border-radius: 8px;
+    max-width: 700px;
+  }
 }
 
-.overlay {
-  background: rgba(0, 0, 0, 0.4);
-  width: 100%;
-  height: 100%;
+.left-side {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-direction: column;
   font-family: 'Playfair', serif;
   h1 {
-    max-width: 700px;
+    max-width: 500px;
   }
   a {
     margin-top: 50px;
@@ -78,7 +93,6 @@ main {
     max-width: 780px;
   }
 }
-
 
 .highlight {
   background-color: pink;
