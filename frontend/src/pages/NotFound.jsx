@@ -4,7 +4,7 @@ import {
   Container, Row, Col,
 } from 'react-bootstrap';
 import Navigate from '../components/navbar.jsx';
-import Footer from '../components/footer.jsx';
+import Footer from '../components/footer/Footer.jsx';
 
 const NotFound = () => {
   const { t } = useTranslation();

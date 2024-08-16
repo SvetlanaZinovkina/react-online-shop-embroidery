@@ -1,0 +1,73 @@
+@import '../../assets/scss/themes/fonts';
+@import '../../assets/scss/themes/mixins';
+@import '../../assets/scss/themes/colors';
+
+.footer {
+  background-color: var(--footer-bg);
+  padding-bottom: 30px;
+  text-align: center;
+  .container {
+    max-width: 1300px; // Задаем максимальную ширину контейнера
+    margin: 0 auto; // Центрируем контейнер по горизонтали
+    padding: 0 15px; // Отступы по бокам
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; // Выравнивание элементов по горизонтали
+  }
+
+  .col {
+    flex: 1;
+    min-width: 0; // Чтобы элементы не растягивались за пределы контейнера
+
+    padding: 0 15px; // Отступы по бокам
+
+    // Чтобы колонки занимали равную ширину
+    @media (min-width: 768px) {
+      flex: 0 0 50%; // На больших экранах колонки занимают 50% ширины
+      max-width: 50%;
+    }
+
+    @media (max-width: 767.98px) {
+      flex: 0 0 100%; // На маленьких экранах колонки занимают 100% ширины
+      max-width: 100%;
+    }
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h5 {
+      margin-bottom: 1rem;
+      @include text-style(var(--font-serif), 30px, 1.875em);
+    }
+
+    p {
+      @include text-style(var(--font-secondary), 15px, 1.875em);
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .footer-rights-image {
+    @media (max-width: 767.98px) {
+      display: none;
+    }
+    background: url('../../assets/images/footerThreads2.jpg') center center / cover no-repeat;
+    height: 200px; // Задаем высоту изображения
+    width: 100%; // Ширина 100% от родительского контейнера
+  }
+}

@@ -2,25 +2,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
 :root {
-  --primary-color: #8a2be2; /* сиреневый */
-  --secondary-color: #ffffff; /* белый */
-  --text-color: #333333; /* черный */
-  --link-color: #8a2be2; /* сиреневый */
-  --background-color: #f0f2f5; /* фоновый цвет */
+  // Цветовые переменные
+  --highlight-bg: pink;
+  --highlight-color: black;
+  --navbar-bg: #004F44;
+  --footer-bg: #f7f7f7;
+
+  // Шрифтовые переменные
+  --font-primary: 'Comfortaa', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-serif: 'Playfair Display', serif;
 }
 
-h1,
-h2 {
+h1{
   font-family: 'Comfortaa', sans-serif;
   line-height: 1.7em;
   font-weight: 400;
 }
-
-h5 {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.35em;
-  font-size: 35px;
+h2 {
+  font-family: 'Comfortaa', sans-serif;
+  color: #004F44;
+  line-height: 1.7em;
   font-weight: 400;
 }
 
@@ -53,7 +58,7 @@ nav {
   .container-fluid {
     max-width: 1300px;
     padding: 0 30px;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -66,23 +71,10 @@ nav {
   }
   img {
     border-radius: 8px;
-    max-width: 700px;
+    width: 100%;
   }
 }
 
-.left-side {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-direction: column;
-  font-family: 'Playfair', serif;
-  h1 {
-    max-width: 500px;
-  }
-  a {
-    margin-top: 50px;
-  }
-}
 main {
   p {
     font-family: 'Playfair Display', serif;
@@ -99,27 +91,4 @@ main {
   color: black;
   padding: 5px;
   border-radius: 3px;
-}
-.footer-rights-image {
-  background: url('/images/footerThreads2.jpg') center center / cover no-repeat;
-}
-.footer {
-  background-color: #f7f7f7;
-  padding-bottom: 30px;
-
-  p {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-  }
-
-}
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  p {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.875em;
-    font-size: 15px;
-  }
 }

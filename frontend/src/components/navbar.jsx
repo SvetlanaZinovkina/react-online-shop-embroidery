@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import routes from '../routes/routes.js';
 import { UserIcon, SearchIcon, CartIcon } from './Icons.jsx';
-import logo from '../images/logo3.svg';
+import logo from '../assets/images/logo3.svg';
 
 const Navigate = () => {
   const { t } = useTranslation();

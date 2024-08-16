@@ -1,0 +1,16 @@
+/* PopularItem.module.scss */
+.container {
+  padding: 0 16px;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 32px 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 16px;
+}
