@@ -6,6 +6,11 @@
   background-color: var(--footer-bg);
   padding-bottom: 30px;
   text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
   .container {
     max-width: 1300px; // Задаем максимальную ширину контейнера
     margin: 0 auto; // Центрируем контейнер по горизонтали
@@ -66,7 +71,8 @@
     @media (max-width: 767.98px) {
       display: none;
     }
-    background: url('../../assets/images/footerThreads2.jpg') center center / cover no-repeat;
+    background: url('../../assets/images/footerThreads2.jpg') center center /
+      cover no-repeat;
     height: 200px; // Задаем высоту изображения
     width: 100%; // Ширина 100% от родительского контейнера
   }
