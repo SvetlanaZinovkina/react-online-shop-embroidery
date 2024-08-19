@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   Container, Row, Col,
 } from 'react-bootstrap';
-import Navigate from '../components/navbar.jsx';
+import Navigate from '../components/navbar/navbar.jsx';
 import Footer from '../components/footer/Footer.jsx';
 
 const NotFound = () => {

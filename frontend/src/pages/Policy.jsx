@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container, Row, Col } from 'react-bootstrap';
 import routes from '../routes/routes';
-import Navigate from '../components/navbar.jsx';
+import Navigate from '../components/navbar/navbar.jsx';
 
 const Footer = () => {
   const { t } = useTranslation();
