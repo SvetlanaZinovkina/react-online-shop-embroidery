@@ -6,11 +6,6 @@
   background-color: var(--footer-bg);
   padding-bottom: 30px;
   text-align: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
   .container {
     max-width: 1300px; // Задаем максимальную ширину контейнера
     margin: 0 auto; // Центрируем контейнер по горизонтали

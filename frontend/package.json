@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5001",
+  "proxy": "http://45.12.239.121:5001",
   "type": "module",
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
