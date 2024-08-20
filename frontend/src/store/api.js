@@ -34,7 +34,9 @@ const api = createApi({
       }),
     }),
     getEmbroideryByCategory: builder.query({
-      query: ({ categoryId, page = 1, limit = 20, language = 'en' }) => ({
+      query: ({
+        categoryId, page = 1, limit = 20, language = 'en',
+      }) => ({
         url: routes.getEmbroideriesByCategory(categoryId),
         params: { page, limit, language },
       }),

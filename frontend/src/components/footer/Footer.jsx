@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import styles from './Footer.module.scss';
+import styles from '../../styles/components/Footer.module.scss';
 import routes from '../../routes/routes.js';
 
 const Footer = () => {
@@ -16,12 +16,14 @@ const Footer = () => {
               <p>{t('footer.phoneNumber')}</p>
               <p>{t('footer.email')}</p>
               <p>{t('footer.address')}</p>
-              <Link to={routes.policy()} className={styles.link}>{t('footer.policy')}</Link>
+              <Link href={routes.policy()} className={styles.link}>
+                {t('footer.policy')}
+              </Link>
             </div>
           </section>
-          <figure className={styles.col}>
+          <aside className={styles.col}>
             <div className={styles['footer-rights-image']} />
-          </figure>
+          </aside>
         </div>
       </div>
     </footer>

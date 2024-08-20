@@ -1,6 +1,4 @@
-@import '../../assets/scss/themes/fonts';
-@import '../../assets/scss/themes/mixins';
-@import '../../assets/scss/themes/colors';
+@import '../mixins';
 
 .card {
   max-width: 300px;
@@ -50,7 +48,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   &:hover {
-    background-color: var(--btn-hower);
+    background-color: var(--btn-hover);
     border: 1px;
   }
 }

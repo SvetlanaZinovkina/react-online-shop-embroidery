@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Button, Card, Col,
-} from 'react-bootstrap';
-import styles from './itemCard.module.scss';
+import styles from '../../styles/components/itemCard.module.scss';
 import createPathToImg from '../../helpers/createPathToImg.js';
 
 const ItemCard = ({ item }) => {

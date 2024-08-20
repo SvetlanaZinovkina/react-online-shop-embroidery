@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 // import { useNavigate } from 'react-router';
-import styles from './popularItem.module.scss';
+import styles from '../../styles/components/popularItem.module.scss';
 import { useGetPopularEmbroideryQuery } from '../../store/api.js';
 import ItemCard from '../card/ItemCard.jsx';
 

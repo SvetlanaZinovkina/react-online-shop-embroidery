@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import fastifyFormbody from '@fastify/formbody';
+import fastifyCors from '@fastify/cors';
 // import fastifyPassport from '@fastify/passport';
 import fastifySensible from '@fastify/sensible';
 import fastifyMethodOverride from 'fastify-method-override';
@@ -32,7 +33,11 @@ const fastify = Fastify({
 fastify.register(fastifySensible);
 fastify.register(fastifyFormbody);
 fastify.register(fastifyMultipart);
-
+fastify.register(fastifyCors, {
+  origin: true, // Разрешает все источники, можно указать конкретные домены, если нужно
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешенные методы
+  allowedHeaders: ['Authorization', 'Content-Type'], // Разрешенные заголовки
+});
 fastify.register(fastifyStatic, {
   root: imagesDir, // Укажите путь к директории с изображениями
   prefix: '/embroidery/', // Префикс URL для доступа к изображениям
