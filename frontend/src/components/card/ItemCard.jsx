@@ -18,7 +18,7 @@ const ItemCard = ({ item }) => {
   };
   return (
     <div className={styles.card}>
-      <img className={styles.cardImage} src={createPathToImg(image)} alt={title} />
+      <img className={styles.cardImage} src={createPathToImg(image)} alt={title} loading="lazy" />
       <div className={styles.cardBody}>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.cardText}>

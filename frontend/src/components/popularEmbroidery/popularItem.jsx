@@ -26,14 +26,16 @@ const PopularItem = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>{t('mainPage.popularEmbroidery')}</h2>
-      <div className={styles.row}>
-        {embroideryItems.map((item) => (
-          <ItemCard item={item} key={item.id} />
-        ))}
+    <main className={styles.main}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>{t('mainPage.popularEmbroidery')}</h2>
+        <div className={styles.row}>
+          {embroideryItems.map((item) => (
+            <ItemCard item={item} key={item.id} />
+          ))}
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -5,31 +5,28 @@
   padding-bottom: 30px;
   text-align: center;
   .container {
-    max-width: 1300px; // Задаем максимальную ширину контейнера
-    margin: 0 auto; // Центрируем контейнер по горизонтали
-    padding: 0 15px; // Отступы по бокам
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
   }
 
   .row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; // Выравнивание элементов по горизонтали
+    justify-content: space-between;
   }
 
   .col {
     flex: 1;
-    min-width: 0; // Чтобы элементы не растягивались за пределы контейнера
+    min-width: 0;
+    padding: 0 15px;
 
-    padding: 0 15px; // Отступы по бокам
-
-    // Чтобы колонки занимали равную ширину
     @media (min-width: 768px) {
-      flex: 0 0 50%; // На больших экранах колонки занимают 50% ширины
+      flex: 0 0 50%;
       max-width: 50%;
     }
 
     @media (max-width: 767.98px) {
-      flex: 0 0 100%; // На маленьких экранах колонки занимают 100% ширины
+      flex: 0 0 100%;
       max-width: 100%;
     }
   }
@@ -40,9 +37,9 @@
     align-items: center;
     text-align: center;
 
-    h5 {
-      margin-bottom: 1rem;
-      @include text-style(var(--font-serif), 30px, 1.875em);
+    h3 {
+      @include text-style(var(--font-serif), 30px, 1.3em);
+      margin: 15px 0;
     }
 
     p {
@@ -51,9 +48,10 @@
     }
 
     a {
+      @include text-style(var(--font-secondary), 15px, 1.875em, 600);
       color: var(--link-color);
       text-decoration: none;
-
+      margin: 15px 0;
       &:hover {
         text-decoration: underline;
       }
@@ -66,7 +64,7 @@
     }
     background: url('../../assets/images/footerThreads2.jpg') center center /
       cover no-repeat;
-    height: 200px; // Задаем высоту изображения
-    width: 100%; // Ширина 100% от родительского контейнера
+    height: 200px;
+    width: 100%;
   }
 }

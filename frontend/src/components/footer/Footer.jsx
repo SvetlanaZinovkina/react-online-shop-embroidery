@@ -12,7 +12,7 @@ const Footer = () => {
         <div className={styles.row}>
           <section className={styles.col}>
             <div className={styles.contact}>
-              <h5>{t('footer.contacts')}</h5>
+              <h3>{t('footer.contacts')}</h3>
               <p>{t('footer.phoneNumber')}</p>
               <p>{t('footer.email')}</p>
               <p>{t('footer.address')}</p>
@@ -21,9 +21,9 @@ const Footer = () => {
               </Link>
             </div>
           </section>
-          <aside className={styles.col}>
-            <div className={styles['footer-rights-image']} />
-          </aside>
+          {/* <aside className={styles.col}> */}
+          {/*  <div className={styles['footer-rights-image']} /> */}
+          {/* </aside> */}
         </div>
       </div>
     </footer>
