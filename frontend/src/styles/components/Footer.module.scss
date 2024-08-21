@@ -48,7 +48,7 @@
     }
 
     a {
-      @include text-style(var(--font-secondary), 15px, 1.875em, 600);
+      @include text-style(var(--font-secondary), 1em, 1.875em, 600);
       color: var(--link-color);
       text-decoration: none;
       margin: 15px 0;
@@ -56,15 +56,5 @@
         text-decoration: underline;
       }
     }
-  }
-
-  .footer-rights-image {
-    @media (max-width: 767.98px) {
-      display: none;
-    }
-    background: url('../../assets/images/footerThreads2.jpg') center center /
-      cover no-repeat;
-    height: 200px;
-    width: 100%;
   }
 }

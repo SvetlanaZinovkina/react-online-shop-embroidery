@@ -1,29 +1,30 @@
 import React from 'react';
-// import { useTranslation } from 'react-i18next';
-// import { Container } from 'react-bootstrap';
-//
-// const Rules = () => {
-//   const { t } = useTranslation();
-//
-//   return (
-//     <Container>
-//       <section className="d-flex my-4 justify-content-center">
-//         <article className="text-center">
-//           <p>{t('mainPage.rules1')}</p>
-//           <p>{t('mainPage.rules2')}</p>
-//           <p>{t('mainPage.rules3')}</p>
-//           <p>{t('mainPage.rules4')}</p>
-//           <p>
-//             <span className="highlight">{t('mainPage.rules5')}</span>
-//           </p>
-//           <p>
-//             <span className="highlight">{t('mainPage.rules6')}</span>
-//           </p>
-//           <p>{t('mainPage.rules7')}</p>
-//           <p>{t('mainPage.rules8')}</p>
-//         </article>
-//       </section>
-//     </Container>
-//   );
-// };
-// export default Rules;
+import { useTranslation } from 'react-i18next';
+import styles from '../styles/components/rules.module.scss';
+
+const Rules = () => {
+  const { t } = useTranslation();
+
+  return (
+    <section>
+      <h1 className={styles.title}>
+        Правила сайта
+      </h1>
+      <article className={styles.container}>
+        <span className={styles.text}>{t('mainPage.rules1')}</span>
+        <span className={styles.text}>{t('mainPage.rules2')}</span>
+        <span className={styles.text}>{t('mainPage.rules3')}</span>
+        <span className={styles.text}>{t('mainPage.rules4')}</span>
+        <span className={styles.text}>
+          <span className={styles.bg}>{t('mainPage.rules5')}</span>
+        </span>
+        <span className={styles.text}>
+          <span className={styles.bg}>{t('mainPage.rules6')}</span>
+        </span>
+        <span className={styles.text}>{t('mainPage.rules7')}</span>
+        <span className={styles.text}>{t('mainPage.rules8')}</span>
+      </article>
+    </section>
+  );
+};
+export default Rules;

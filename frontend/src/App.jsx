@@ -6,7 +6,7 @@ import { Provider, useDispatch } from 'react-redux';
 import AdminUploadPage from './components/AdminUploadPage.jsx';
 import NotFound from './pages/404.jsx';
 import MainPage from './pages';
-import Policy from './pages/Policy.jsx';
+import Policy from './pages/policy.jsx';
 import routes from './routes/routes.js';
 import translationRU from '../public/locales/ru/common.json';
 import translationEN from '../public/locales/en/common.json';

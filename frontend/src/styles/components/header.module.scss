@@ -6,10 +6,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    min-height: 40vh;
     padding: 0 30px;
     @media (max-width: 767.98px) {
-        height: 30vh;
+        min-height: 30vh;
       }
     .container {
         max-width: 1300px;
