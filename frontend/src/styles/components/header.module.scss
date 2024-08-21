@@ -75,7 +75,7 @@
             margin: 1em auto;
           }
         &:hover {
-            background-color: #e0e0e0;
+            background-color: var(--btn-hover-green);
         }
     }
 }

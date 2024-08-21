@@ -21,9 +21,6 @@ const Footer = () => {
               </Link>
             </div>
           </section>
-          {/* <aside className={styles.col}> */}
-          {/*  <div className={styles['footer-rights-image']} /> */}
-          {/* </aside> */}
         </div>
       </div>
     </footer>
