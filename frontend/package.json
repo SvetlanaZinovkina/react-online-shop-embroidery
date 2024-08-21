@@ -8,7 +8,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:ignore-lint": "next build",
+    "start:ignore-lint": "next start"
   },
   "eslintConfig": {
     "extends": [
