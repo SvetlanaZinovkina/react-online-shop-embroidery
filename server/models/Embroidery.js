@@ -94,17 +94,62 @@ class Embroidery {
     }
   }
 
+  // static async findAll(language = 'en', page = 1, limit = 20) {
+  //   try {
+  //     // Рассчитать смещение для пагинации
+  //     const offset = (page - 1) * limit;
+  //
+  //     // Получить вышивки с пагинацией
+  //     const embroideries = await knex('embroidery')
+  //       .join('embroidery_translations', function () {
+  //         this.on('embroidery.id', 'embroidery_translations.embroidery_id')
+  //           .andOn('embroidery_translations.language', '=', language);
+  //       })
+  //       .select(
+  //         'embroidery.id',
+  //         'embroidery.file_path',
+  //         'embroidery.is_on_sale',
+  //         'embroidery.sale_price',
+  //         'embroidery.is_new',
+  //         'embroidery_translations.title',
+  //         'embroidery_translations.price',
+  //       )
+  //       .limit(limit)
+  //       .offset(offset);
+  //
+  //     // Получить изображения для каждой вышивки
+  //     for (const embroidery of embroideries) {
+  //       embroidery.images = await knex('embroidery_images')
+  //         .where('embroidery_id', embroidery.id)
+  //         .select('image_path');
+  //     }
+  //
+  //     // Получить общее количество вышивок для пагинации
+  //     const totalCount = await knex('embroidery')
+  //       .count('* as count')
+  //       .join('embroidery_translations', function () {
+  //         this.on('embroidery.id', 'embroidery_translations.embroidery_id')
+  //           .andOn('embroidery_translations.language', '=', language);
+  //       })
+  //       .first();
+  //
+  //     return {
+  //       total: totalCount.count,
+  //       page: parseInt(page, 10),
+  //       limit: parseInt(limit, 10),
+  //       data: embroideries,
+  //     };
+  //   } catch (err) {
+  //     throw new Error(`Ошибка получения вышивок: ${err.message}`);
+  //   }
+  // }
   static async findAll(language = 'en', page = 1, limit = 20) {
     try {
-      // Рассчитать смещение для пагинации
       const offset = (page - 1) * limit;
 
-      // Получить вышивки с пагинацией
       const embroideries = await knex('embroidery')
-        .join('embroidery_translations', function () {
-          this.on('embroidery.id', 'embroidery_translations.embroidery_id')
-            .andOn('embroidery_translations.language', '=', language);
-        })
+        .innerJoin('embroidery_translations', 'embroidery.id', 'embroidery_translations.embroidery_id')
+        .where('embroidery_translations.language', language)
         .select(
           'embroidery.id',
           'embroidery.file_path',
@@ -117,20 +162,16 @@ class Embroidery {
         .limit(limit)
         .offset(offset);
 
-      // Получить изображения для каждой вышивки
       for (const embroidery of embroideries) {
         embroidery.images = await knex('embroidery_images')
           .where('embroidery_id', embroidery.id)
           .select('image_path');
       }
 
-      // Получить общее количество вышивок для пагинации
       const totalCount = await knex('embroidery')
         .count('* as count')
-        .join('embroidery_translations', function () {
-          this.on('embroidery.id', 'embroidery_translations.embroidery_id')
-            .andOn('embroidery_translations.language', '=', language);
-        })
+        .innerJoin('embroidery_translations', 'embroidery.id', 'embroidery_translations.embroidery_id')
+        .where('embroidery_translations.language', language)
         .first();
 
       return {
@@ -143,6 +184,7 @@ class Embroidery {
       throw new Error(`Ошибка получения вышивок: ${err.message}`);
     }
   }
+
 
   static async findByCategory(language = 'en', categoryId, page = 1, limit = 20) {
     try {
